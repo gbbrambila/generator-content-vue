@@ -1,4 +1,4 @@
-# generator-coates-content-vue [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-content-vue [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > 
 
 ## Installation
@@ -7,7 +7,7 @@ First, install [Yeoman](http://yeoman.io) and generator-coates-content-vue using
 
 ```bash
 npm install -g yo
-npm install -g generator-coates-content-vue
+npm install -g generator-content-vue
 ```
 
 Then generate your new project:
