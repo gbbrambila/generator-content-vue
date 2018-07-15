@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Guilherme Brambila",
+      "authorEmail": "gb.brambila@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
