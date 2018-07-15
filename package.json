@@ -1,5 +1,5 @@
 {
-  "name": "generator-coates-content-vue",
+  "name": "generator-content-vue",
   "version": "0.0.0",
   "description": "",
   "homepage": "",
@@ -78,6 +78,6 @@
       "prettier"
     ]
   },
-  "repository": "gbbrambila/generator-coates-content-vue",
+  "repository": "gbbrambila/generator-content-vue",
   "license": "MIT"
 }

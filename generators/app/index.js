@@ -1,7 +1,9 @@
 'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
+
+const path = require('path')
+const Generator = require('yeoman-generator')
+const chalk = require('chalk')
+const yosay = require('yosay')
 
 module.exports = class extends Generator {
   prompting() {
@@ -12,11 +14,17 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
-      }
+        type: 'input',
+        name: 'name',
+        message: 'Name of the project:',
+        default: path.basename(process.cwd())
+      },
+      {
+        type: 'input',
+        name: 'description',
+        message: 'Description:',
+        default: ''
+      },
     ];
 
     return this.prompt(prompts).then(props => {
@@ -26,13 +34,39 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+    
+    this.fs.copyTpl(
+      this.templatePath(),
+      this.destinationPath(),
+      {
+        name: this.name,
+        description: this.description,
+      },
+      {
+        globOptions: {
+          // https://github.com/isaacs/node-glob
+          dot: true,
+          ignore: ['**/package-lock.json']
+        }
+      }
     );
+
+    const keepEmptyFolders = [
+      'static',
+      'src/content/components',
+      'src/content/containers',
+      'src/content/screens'
+    ]
+
+    keepEmptyFolders.forEach((folder) => {
+      this.fs.copy(
+        this.templatePath(`${folder}/.gitkeep`),
+        this.destinationPath(`${folder}/.gitkeep`)
+      );  
+    })
   }
 
   install() {
-    this.installDependencies();
+    //this.installDependencies();
   }
 };
